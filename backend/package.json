@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
-    "db:init": "node scripts/init-db.mjs"
+    "db:init": "node scripts/init-db.mjs",
+    "db:check": "node scripts/check-db-env.mjs"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
