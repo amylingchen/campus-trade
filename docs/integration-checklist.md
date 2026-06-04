@@ -139,6 +139,7 @@ Expected work:
 - Product Planner update: mobile marketplace search must remain visible under the school selector, with `Sort` and `Filter` beside each other below it. Marketplace feeds should request and display available listings only.
 - Frontend Prototype Designer follow-up: favorite controls on product cards and listing detail are toggle actions using `POST /api/favorites/:productId` and `DELETE /api/favorites/:productId`.
 - Frontend Prototype Designer follow-up: product detail mobile order is title/price, actions, listing info tags, description, then seller.
+- Prototype Test Runner follow-up: `tests/e2e/unauth-route-access.spec.js` now covers every route in `frontend/src/App.jsx` while logged out. Public routes open successfully, protected routes redirect to `/auth/login`, and unknown routes fall back to `/`.
 - Prototype Test Runner follow-up: added mobile E2E coverage for compact marketplace controls.
 
 ## Remaining Mismatches

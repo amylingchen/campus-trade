@@ -9,6 +9,7 @@ Latest targeted run:
 - API smoke tests: 14 passed, 0 failed
 - Socket smoke tests: 1 passed, 0 failed
 - Full Playwright E2E tests: 9 passed, 0 failed
+- Logged-out route access Playwright tests: 17 passed, 0 failed
 - Cleanup verification: previous and current automated test database rows removed; final cleanup returned 0 rows affected
 - Frontend build: passed
 
@@ -51,6 +52,7 @@ Previous regression baseline:
 | UI-004 | Register and verify school email | PASS | frontend-prototype-designer/backend-api-builder | Playwright used local `devCode` and saw verification success |
 | UI-005 | Course search opens course listings | PASS | frontend-prototype-designer | Search found `CSE 3442` and opened course listing page |
 | UI-006 | Logged-out page tour and protected route check | PASS | frontend-prototype-designer/integration-tester | Visitor opened public pages; `/listings/new`, `/chats`, `/me`, `/me/listings`, and `/me/favorites` redirected to login |
+| UI-009A | Full logged-out route access matrix | PASS | frontend-prototype-designer/integration-tester | `tests/e2e/unauth-route-access.spec.js` verified 8 public routes open, 8 protected routes redirect to `/auth/login`, and unknown routes fall back to `/` |
 | UI-007 | New user full seller flow | PASS | frontend-prototype-designer/backend-api-builder | New `e2e-...@mavs.uta.edu` user registered, verified, uploaded image, created listing, and saw it in My Listings |
 | UI-008 | Two-user interaction | PASS | frontend-prototype-designer/backend-api-builder/integration-tester | `maya@mavs.uta.edu` messaged the new seller; new seller opened Chats and replied |
 | OPS-001 | Cleanup previous and current automated test data | PASS | prototype-test-runner | Initial cleanup removed 7 previous test products and 8 test users; final cleanup returned 0 rows affected |
@@ -116,6 +118,7 @@ Previous regression baseline:
 
 - Mobile viewport E2E regression.
 - Cross-browser tests beyond Chromium.
+- Deployed GitHub Pages/Railway route matrix; the new logged-out access matrix was run against local `http://localhost:5173`.
 - `npm run test:all` as a single chained command is currently unreliable in this Windows shell because Playwright worker startup fails with `spawn EPERM` after the API script. The same API and E2E commands pass when run separately.
 - Full edit-listing replacement of images and course codes.
 - Delete listing UI action.

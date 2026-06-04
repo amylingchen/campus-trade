@@ -42,6 +42,7 @@ This plan validates the Campus Trade MVP against the product requirements, front
 | UI-007 | E2E | Verification flow | Auth | Newly registered user sends code and confirms verification | frontend-prototype-designer |
 | UI-008 | E2E | My listings | Seller flow | Current user's created listing appears in My Listings | frontend-prototype-designer/integration-tester |
 | UI-009 | E2E | Logged-out page tour | Browse/Auth | Visitor can open public pages; protected pages redirect to login and protected product actions show login/verification prompt | frontend-prototype-designer/integration-tester |
+| UI-009A | E2E | Full logged-out route access matrix | Browse/Auth | Visitor can open every public route in `frontend/src/App.jsx`; every protected route redirects to `/auth/login`; unknown routes fall back safely to `/` | frontend-prototype-designer/integration-tester |
 | UI-010 | E2E | New user full seller flow | Seller flow | New user registers, verifies, uploads an image, creates listing, and sees it in My Listings | frontend-prototype-designer/backend-api-builder |
 | UI-011 | E2E | Two-user marketplace interaction | Chat | Seeded buyer messages new seller; new seller sees chat and replies | frontend-prototype-designer/backend-api-builder/integration-tester |
 | OPS-001 | Data cleanup | Remove automated test data | Test hygiene | Previous and current test products, users, chats, messages, favorites, reports, images rows, and course links are deleted by prefix | prototype-test-runner |
@@ -51,6 +52,7 @@ This plan validates the Campus Trade MVP against the product requirements, front
 - API smoke tests: `tests/api-smoke.mjs`
 - Socket smoke tests: `tests/socket-smoke.mjs`
 - Playwright E2E tests: `tests/e2e/campus-trade.spec.js`
+- Logged-out route access tests: `tests/e2e/unauth-route-access.spec.js`
 - Full journey cleanup E2E tests: `tests/e2e/full-journey-cleanup.spec.js`
 - Database cleanup script: `backend/scripts/cleanup-test-data.mjs`
 - API result JSON: `test-results/api-smoke-results.json`
