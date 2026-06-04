@@ -16,6 +16,7 @@ import { usersRouter } from "./routes/users.js";
 import { verificationRouter } from "./routes/verification.js";
 import { errorHandler, notFoundHandler } from "./middleware/errors.js";
 import { attachChatSocket } from "./realtime/chatSocket.js";
+import { isOriginAllowed } from "./config/origin.js";
 
 const app = express();
 const port = process.env.PORT ?? 4000;
@@ -23,7 +24,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const uploadsPath = path.resolve(__dirname, "../uploads");
 
 app.use(cors({
-  origin: process.env.FRONTEND_ORIGIN ?? "http://localhost:5173",
+  origin(origin, callback) {
+    callback(null, isOriginAllowed(origin));
+  },
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
   methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],

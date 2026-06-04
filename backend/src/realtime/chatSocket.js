@@ -1,4 +1,5 @@
 import { Server } from "socket.io";
+import { parseAllowedOrigins } from "../config/origin.js";
 import { getUserFromToken } from "../middleware/auth.js";
 import {
   createMessageForUser,
@@ -20,7 +21,7 @@ function publicError(error) {
 export function attachChatSocket(server) {
   const io = new Server(server, {
     cors: {
-      origin: process.env.FRONTEND_ORIGIN ?? "http://localhost:5173",
+      origin: parseAllowedOrigins(process.env.FRONTEND_ORIGIN),
       credentials: true,
       allowedHeaders: ["Content-Type", "Authorization"],
     },
