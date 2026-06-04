@@ -51,3 +51,12 @@ npm run test:e2e
 ## Notes
 
 GitHub Pages can host the frontend build only. The backend API, MySQL database, Socket.io server, and uploaded images need a backend hosting platform such as Render, Railway, Fly.io, or a VPS.
+
+## GitHub Pages Frontend Deploy
+
+This repository includes `.github/workflows/deploy-frontend.yml`. Every push to `main` builds `frontend/` and deploys the static app to GitHub Pages.
+
+For a full online version, configure these GitHub repository variables after deploying the backend:
+
+- `VITE_API_BASE_URL`: backend API URL, for example `https://your-api.example.com/api`
+- `VITE_SOCKET_URL`: Socket.io server URL, for example `https://your-api.example.com`
