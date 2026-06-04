@@ -20,6 +20,7 @@ import { isOriginAllowed } from "./config/origin.js";
 
 const app = express();
 const port = process.env.PORT ?? 4000;
+const host = process.env.HOST ?? "0.0.0.0";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const uploadsPath = path.resolve(__dirname, "../uploads");
 
@@ -55,6 +56,6 @@ app.use(errorHandler);
 const server = http.createServer(app);
 attachChatSocket(server);
 
-server.listen(port, () => {
-  console.log(`Campus Trade API listening on http://localhost:${port}/api`);
+server.listen(port, host, () => {
+  console.log(`Campus Trade API listening on http://${host}:${port}/api`);
 });

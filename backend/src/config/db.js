@@ -3,14 +3,18 @@ import mysql from "mysql2/promise";
 export function getDbConfig() {
   const url = process.env.DATABASE_URL ?? process.env.MYSQL_URL ?? process.env.MYSQL_URL_PUBLIC;
   if (url) {
-    const parsed = new URL(url);
-    return {
-      host: parsed.hostname,
-      port: Number(parsed.port || 3306),
-      user: decodeURIComponent(parsed.username),
-      password: decodeURIComponent(parsed.password),
-      database: parsed.pathname.replace(/^\//, "") || "railway",
-    };
+    try {
+      const parsed = new URL(url);
+      return {
+        host: parsed.hostname,
+        port: Number(parsed.port || 3306),
+        user: decodeURIComponent(parsed.username),
+        password: decodeURIComponent(parsed.password),
+        database: parsed.pathname.replace(/^\//, "") || "railway",
+      };
+    } catch {
+      console.warn("Ignoring invalid database URL. Check DATABASE_URL, MYSQL_URL, or MYSQL_URL_PUBLIC.");
+    }
   }
 
   return {
